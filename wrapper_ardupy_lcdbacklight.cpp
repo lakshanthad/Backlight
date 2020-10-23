@@ -63,11 +63,11 @@ extern "C"
     } 
     uint8_t common_lcdbacklight_set_brightness(abstract_module_t *self, uint8_t brightness) //function to convert passed in celcius values to farenheit
     {
-        return lcdbacklight.setBrightness(brightness);
+        lcdbacklight.setBrightness(brightness);
     }
     uint8_t common_lcdbacklight_set_maxbrightness(abstract_module_t *self, uint8_t maxBrightness) //function to convert passed in celcius values to farenheit
     {
-        return lcdbacklight.setMaxBrightness(maxBrightness);
+        lcdbacklight.setMaxBrightness(maxBrightness);
     }    
             
 }
