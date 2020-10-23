@@ -1,0 +1,12 @@
+{
+    "name": "Wio Terminal Backlight",
+    "version": "1.0.0",
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "dependencies": [{
+        "name": "Wio_Terminal_Backlight",
+        "url": "https://github.com/ciniml/WioTerminal_BackLight.git"
+    }]
+}
