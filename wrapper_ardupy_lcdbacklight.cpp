@@ -38,36 +38,36 @@ extern "C" //tell compiler to use the C naming and calling conventions
 }
 
 //initialize module 
-#define backlight (*(BACKLIGHT *)self->module)
+#define lcdbacklight (*(LCDBackLight *)self->module)
 void *operator new(size_t, void *);
 
 //map functions from dependent Arduino library 
 extern "C"
 {
-    void common_hal_backlight_construct(abstract_module_t *self) //initializing function to create an object
+    void common_hal_lcdbacklight_construct(abstract_module_t *self) //initializing function to create an object
     {
-        self->module = new (m_new_obj(BACKLIGHT)) BACKLIGHT();
-        backlight.initialize(); //initialize backlight  
+        self->module = new (m_new_obj(LCDBackLight)) LCDBackLight();
+        lcdbacklight.initialize(); //initialize backlight  
     }
-    void common_hal_backlight_deinit(abstract_module_t *self) //deinitializing function
+    void common_hal_lcdbacklight_deinit(abstract_module_t *self) //deinitializing function
     {
-        backlight.~BACKLIGHT();
+        lcdbacklight.~LCDBackLight();
     }
-    uint8_t common_hal_backlight_get_brightness(abstract_module_t *self) //function to obtain brightness
+    uint8_t common_hal_lcdbacklight_get_brightness(abstract_module_t *self) //function to obtain brightness
     {
-        return backlight.getBrightness();
+        return lcdbacklight.getBrightness();
     }  
-    uint8_t common_hal_backlight_get_maxbrightness(abstract_module_t *self) //function to obtain maximum brightness
+    uint8_t common_hal_lcdbacklight_get_maxbrightness(abstract_module_t *self) //function to obtain maximum brightness
     {
-        return backlight.getMaxBrightness();
+        return lcdbacklight.getMaxBrightness();
     } 
-    uint8_t common_backlight_set_brightness(abstract_module_t *self, uint8_t brightness) //function to set brightness
+    uint8_t common_lcdbacklight_set_brightness(abstract_module_t *self, uint8_t brightness) //function to set brightness
     {
-        backlight.setBrightness(brightness);
+        lcdbacklight.setBrightness(brightness);
     }
-    uint8_t common_backlight_set_maxbrightness(abstract_module_t *self, uint8_t maxBrightness) //function to set maximum brightness
+    uint8_t common_lcdbacklight_set_maxbrightness(abstract_module_t *self, uint8_t maxBrightness) //function to set maximum brightness
     {
-        backlight.setMaxBrightness(maxBrightness);
+        lcdbacklight.setMaxBrightness(maxBrightness);
     }    
             
 }

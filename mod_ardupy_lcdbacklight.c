@@ -41,7 +41,7 @@ uint8_t common_hal_lcdbacklight_get_maxbrightness(abstract_module_t *self);
 uint8_t common_lcdbacklight_set_brightness(abstract_module_t *self, uint8_t brightness);
 uint8_t common_lcdbacklight_set_maxbrightness(abstract_module_t *self, uint8_t maxBrightness);
 
-extern const mp_obj_type_t wioterminal_lcdbacklight_type; //declaration of initial module type 
+extern const mp_obj_type_t wt_lcdbacklight_type; //declaration of initial module type 
 
 //initialize module 
 m_generic_make(lcdbacklight) {
@@ -55,14 +55,14 @@ m_generic_make(lcdbacklight) {
 void lcdbacklight_obj_attr(mp_obj_t self_in, qstr attr, mp_obj_t *dest)
 {
     abstract_module_t *self = (abstract_module_t *)self_in;
-    uint8_t number; //define number as float data type
+    uint8_t number; //define number as int data type
 
     if (dest[0] == MP_OBJ_NULL) //load attributes 
     {
         if (attr == MP_QSTR_getBrightness) //MP_QSTR_[Function-name] & Function-name used for ArduPy calling 
         {
             number = common_hal_lcdbacklight_get_brightness(self); //call previously defined function
-            dest[0] = mp_obj_new_int(number); //this is the Micropython float type and should match with the data type 
+            dest[0] = mp_obj_new_int(number); //this is the Micropython int type and should match with the data type 
             return;
         }
         else if (attr == MP_QSTR_getMaxBrightness)
@@ -107,9 +107,9 @@ const mp_rom_map_elem_t lcdbacklight_locals_dict_table[] = {
 MP_DEFINE_CONST_DICT(lcdbacklight_locals_dict, lcdbacklight_locals_dict_table);
 
 //initial module type 
-const mp_obj_type_t wioterminal_lcdbacklight_type = {
+const mp_obj_type_t wt_lcdbacklight_type = {
     {&mp_type_type},
-    .name = MP_QSTR_wioterminal_lcdbacklight,
+    .name = MP_QSTR_wt_lcdbacklight,
     .make_new = lcdbacklight_make_new,
     .locals_dict = (mp_obj_t)&lcdbacklight_locals_dict,
     .attr = lcdbacklight_obj_attr,
