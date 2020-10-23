@@ -38,36 +38,36 @@ extern "C" //tell compiler to use the C naming and calling conventions
 }
 
 //initialize module 
-#define lcdbacklight (*(LCDBackLight *)self->module)
+#define backlight (*(BACKLIGHT *)self->module)
 void *operator new(size_t, void *);
 
 //map functions from dependent Arduino library 
 extern "C"
 {
-    void common_hal_lcdbacklight_construct(abstract_module_t *self) //initializing function to create an object
+    void common_hal_backlight_construct(abstract_module_t *self) //initializing function to create an object
     {
-        self->module = new (m_new_obj(LCDBackLight)) LCDBackLight();
-        lcdbacklight.initialize(); //start the sensor 
+        self->module = new (m_new_obj(BACKLIGHT)) BACKLIGHT();
+        backlight.initialize(); //initialize backlight  
     }
-    void common_hal_lcdbacklight_deinit(abstract_module_t *self) //deinitializing function
+    void common_hal_backlight_deinit(abstract_module_t *self) //deinitializing function
     {
-        lcdbacklight.~LCDBackLight();
+        backlight.~BACKLIGHT();
     }
-    uint8_t common_hal_lcdbacklight_get_brightness(abstract_module_t *self) //function to obtain temperature readings
+    uint8_t common_hal_backlight_get_brightness(abstract_module_t *self) //function to obtain brightness
     {
-        return lcdbacklight.getBrightness();
+        return backlight.getBrightness();
     }  
-    uint8_t common_hal_lcdbacklight_get_maxbrightness(abstract_module_t *self) //function to obtain humidity readings
+    uint8_t common_hal_backlight_get_maxbrightness(abstract_module_t *self) //function to obtain maximum brightness
     {
-        return lcdbacklight.getMaxBrightness();
+        return backlight.getMaxBrightness();
     } 
-    uint8_t common_lcdbacklight_set_brightness(abstract_module_t *self, uint8_t brightness) //function to convert passed in celcius values to farenheit
+    uint8_t common_backlight_set_brightness(abstract_module_t *self, uint8_t brightness) //function to set brightness
     {
-        lcdbacklight.setBrightness(brightness);
+        backlight.setBrightness(brightness);
     }
-    uint8_t common_lcdbacklight_set_maxbrightness(abstract_module_t *self, uint8_t maxBrightness) //function to convert passed in celcius values to farenheit
+    uint8_t common_backlight_set_maxbrightness(abstract_module_t *self, uint8_t maxBrightness) //function to set maximum brightness
     {
-        lcdbacklight.setMaxBrightness(maxBrightness);
+        backlight.setMaxBrightness(maxBrightness);
     }    
             
 }
