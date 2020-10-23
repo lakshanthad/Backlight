@@ -40,7 +40,7 @@ def main(): # main function
 
         if (brightness > maxBrightness): # set brightness to 0 if brightness value equals maxBrightness value
             brightness = 0
-        backlight.set_brightness(brightness) # turn on backlight with brightness  
+        backlight.setBrightness(brightness) # turn on backlight with brightness  
         time.sleep_ms(50)
 
 if __name__ == "__main__": # check whether this is run from main.py
@@ -49,19 +49,24 @@ if __name__ == "__main__": # check whether this is run from main.py
 
 ## API Reference
 
-- **getBrightness** : Obtain Temperature in Celcius 
+- **getBrightness** : Obtain LCD brightness
 ```python
-print(dht.temperature)
+ backlight.getBrightness
 ```
 
-- **getMaxBrightness**: Obtain Humidity in Relative Humidity %
+- **getMaxBrightness**: Obtain LCD maximum brightness
 ```python
- print(dht.humidity)
+ backlight.getMaxBrightness
 ```
 
-- **set_brightness**: Convert Celcius values into Farenheit values
+- **setBrightness()**: Set LCD brightness 
 ```python
- print(dht.ctof())
+ backlight.setBrightness(50)
+```
+
+- **setMaxBrightness()**: Set LCD maximum brightness
+```python
+ backlight.setMaxBrightness(100)
 ```
 ----
 ## License
